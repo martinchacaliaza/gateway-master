@@ -1,0 +1,49 @@
+server:
+   port: 8099
+
+eureka:
+  client:
+    #registerWithEureka: false
+    serviceUrl:
+      defaultZone: http://eureka-server:9042/eureka/ 
+
+spring:
+  application:
+    name: Gateway
+
+
+zuul:
+  host:
+    connect-timeout-millis: 100000
+    socket-timeout-millis: 100000
+  routes:         
+    bancarios:
+      path: /producto_bancario/**
+      service-id: producto_bancario
+ 
+    creditos:
+      path: /productos_creditos/**
+      service-id: productos_creditos
+  
+    clientes:
+      path: /clientes/**
+      service-id: clientes
+      
+    
+    operacionesbancarias:
+      path: /servicio-productos/**
+      service-id: servicio-productos
+   
+    operacionescredito:
+      path: /operaciones_cuentas_creditos/**
+      service-id: operaciones_cuentas_creditos
+      
+    
+    
+    
+    
+    
+    
+  # localhost:8080/pacientes
+  # localhost:8099/micro-crud/pacientes
+    
